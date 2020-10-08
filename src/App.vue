@@ -1,19 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Choser :tasks="logger()" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Choser from "./components/Choser";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Choser,
+  },
+  methods: {
+    logger() {
+      let currElem = 0;
+      let nextElem = currElem + 1;
+      if (this.count === 0) {
+        return [this.tasks[0], this.tasks[1]];
+      } else {
+        return [...this.tasks];
+      }
+    },
+  },
+  data() {
+    return {
+      count: 0,
+      tasks: ["jotaro", "joseph", "joske"],
+    };
+  },
+};
 </script>
 
 <style>
