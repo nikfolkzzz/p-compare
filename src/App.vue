@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <Choser :tasks="logger()" />
+    <h1>pomidoro compare</h1>
+    <form class="container">
+      <label for="">
+        <input  type="text">
+        <button> OK</button>
+      </label>
+      
+    </form>
+    <Choser  />
   </div>
 </template>
 
@@ -12,20 +20,15 @@ export default {
     Choser,
   },
   methods: {
-    logger() {
-      let currElem = 0;
-      let nextElem = currElem + 1;
-      if (this.count === 0) {
-        return [this.tasks[0], this.tasks[1]];
-      } else {
-        return [...this.tasks];
-      }
-    },
+    addTask(){
+
+    }
+
   },
   data() {
     return {
       count: 0,
-      tasks: ["jotaro", "joseph", "joske"],
+      tasks: []
     };
   },
 };
