@@ -6,7 +6,16 @@
 
 
 <script>
+// import elemIndexArrReturner from '../helpers/elemIndexArrReturner'
+// const arrLeng = this.todos.length
+
 export default {
+
+
+  props:{
+    todos:Array,
+    arrLength: Function,
+  }
 };
 </script>
 
@@ -15,5 +24,10 @@ export default {
   padding: 10px;
   border: 1px solid #000;
   background-color: yellowgreen;
+}
+
+
+h1{
+  margin-top: 0;
 }
 </style>
