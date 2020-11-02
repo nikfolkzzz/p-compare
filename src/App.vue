@@ -6,7 +6,7 @@
       <AddTodo @add-todo= "addTodo" />
       <TaskList :todos = "todos"/>
     </div>
-    <Choser :todos="todos" :arrLength = "arrLangReturner" />
+    <Choser :todos="todos" @change-rating = "ChangeRating"/>
     </div>
   </div>
 </template>
@@ -34,21 +34,51 @@ export default {
               this.todos.push(task)
 }
     },
+ // eslint-disable-next-line no-unused-vars
+    ChangeRating(id,count){
+      const countLimit = this.todos.length*(this.todos.length-1)/2
+      let rating = 0
 
-    arrLangReturner(){
-      console.log(this.todos.length)
-      return this.todos.length
+      for( let item of this.todos){
+        if(item.id == id && rating<=countLimit-1 ) {
+          item.rating ++
+          rating+=item.rating
+          console.log(count)
+        }
+      }
+
+
+
     }
+
   }
   ,
   data() {
     return {
       count: 0,
-      todos: [{
-        title: 'jojo'
+      todos: [
+
+        {
+
+        id:0,
+        title: 'jojo',
+        rating:0
       },{
-        title:'dio'
-      }]
+        id:1,
+        title:'dio',
+        rating:0
+      },{
+        id:2,
+        title:'kurwa',
+        rating:0
+      },{
+        id: 3,
+        title:'lira',
+        rating:0
+      }
+
+
+      ]
     };
   },
 };
@@ -64,7 +94,7 @@ export default {
   margin-top: 60px;
 
 
-  
+
 }
 .article{
   width: 50%;
